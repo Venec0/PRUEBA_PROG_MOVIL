@@ -11,11 +11,11 @@
 
 <ion-content class="bg-color">
 
-  <ion-card class="ion-no-margin">
+  <ion-card class="ion-no-margin" color="transparent">
 
-    <ion-card-header color="#808289">
+    <ion-card-header>
       <ion-card-title>
-        Registrarse
+        Registro de Usuario
       </ion-card-title>
       <ion-card-subtitle>
         Llena el siguiente formulario para crear tu cuenta:
@@ -23,26 +23,35 @@
     </ion-card-header>
 
     <ion-card-content>
-      <ion-item color="E1EAF9">
-        <ion-input name="names" type="text" placeholder="Nombre Completo">
+      <ion-item color="transparent">
+        <ion-input name="names" type="text" placeholder="Nombre Completo" color="black">
           <ion-icon name="person-outline"></ion-icon>
         </ion-input>
       </ion-item>
-      <ion-item color="E1EAF9">
-        <ion-input name="names" type="text" placeholder="Número Telefónico">
-          <ion-icon name="call-outline"></ion-icon>
-        </ion-input>
-      </ion-item>
-      <ion-item color="E1EAF9">
+      <ion-item color="transparent">
         <ion-input name="email" type="text" placeholder="Email">
           <ion-icon name="mail-outline"></ion-icon>
         </ion-input>
       </ion-item>
-      <ion-item color="E1EAF9">
-        <ion-input name="rut" type="text" placeholder="RUT">
-          <ion-icon name="id-outline"></ion-icon>
+        <ion-item color="transparent">
+        <ion-input name="password" type="text" placeholder="Contraseña">
+          <ion-icon name="lock-closed-outline"></ion-icon>
         </ion-input>
       </ion-item>
+      <ion-item color="transparent">
+        <ion-input name="names" type="text" placeholder="Número Telefónico">
+          <ion-icon name="call-outline"></ion-icon>
+        </ion-input>
+      </ion-item>
+      <ion-item color="transparent">
+        <ion-input name="rut" type="text" placeholder="RUT">
+          <ion-icon name="card-outline"></ion-icon>
+        </ion-input>
+      </ion-item>
+
+      <div class = "signin-btns">
+        <ion-button fill="outline" shape="round" color="#53565A">Registrarse</ion-button>
+      </div>
     </ion-card-content>
 
   </ion-card>
