@@ -1,0 +1,60 @@
+ion-content {
+    --ion-background-color: #E1EAF9 !important;
+}
+
+ion-toolbar {
+    --ion-background-color: transparent;
+    opacity: 0;
+}
+
+ion-card-title {
+    font-size: 20px;
+    color: #080808;
+    text-align: center;
+}
+
+ion-header {
+    position: absolute;
+}
+
+
+ion-card {
+    --ion-background-color: transparent;
+box-shadow: none !important;
+background: none;
+}
+
+.signin-btns {
+    margin-top: 55px;
+    text-align: center;
+    color: #F0F4FA;
+}
+
+.loginbtn {
+    --ion-color-primary: #215AB7;
+}
+
+.text-tag {
+    text-align: center;
+    margin-bottom: 105px;
+}
+
+.students {
+    text-align: center;
+}
+
+.names {
+    text-align: center;
+}
+
+.teacher {
+    text-align: center;
+}
+
+.t-name {
+    text-align: center;
+}
+
+.seccion {
+    text-align: center;
+}

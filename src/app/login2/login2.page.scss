@@ -1,0 +1,47 @@
+ion-header {
+    position: absolute;
+}
+  
+ion-toolbar {
+    --ion-background-color: transparent;
+    --opacity: 0;
+}
+  
+ion-content {
+    --ion-background-color: #E1EAF9;
+}
+
+ion-card {
+background: none;
+}
+
+.wrapform {
+    margin-top: 30px;
+}
+
+ion-item {
+    --highlight-color-focused: #647B9D;
+    --padding-start: 0;
+    --inner-pading-end: 0;
+}
+  
+ion-input {
+    color: #000000;
+    background: #E1EAF9;
+}
+
+.password_forgot {
+    text-align: right;
+    ion-button {
+        font-size: 12px;
+    }
+}
+
+.sign-btn-wrap {
+    text-align: center;
+    padding-top: 30px;
+    .sign-btn {
+        --ion-primary-color: #215AB7;
+        color: #FAF6FA;
+    }
+}
