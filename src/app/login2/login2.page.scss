@@ -13,6 +13,8 @@ ion-content {
 
 ion-card {
 background: none;
+    --ion-background-color: transparent;
+box-shadow: none;
 }
 
 .wrapform {
@@ -20,14 +22,15 @@ background: none;
 }
 
 ion-item {
+    color: #74787E;
+    --border-color: #D4D7DB;
     --highlight-color-focused: #647B9D;
     --padding-start: 0;
     --inner-pading-end: 0;
-}
-  
-ion-input {
-    color: #000000;
-    background: #E1EAF9;
+    ion-input {
+        color: #000000;
+        background: #E1EAF9;
+    }
 }
 
 .password_forgot {
@@ -42,6 +45,37 @@ ion-input {
     padding-top: 30px;
     .sign-btn {
         --ion-primary-color: #215AB7;
+        --background-activated: #E1EAF9;
+        --background-focused: #E1EAF9;
+        --background-hover: #647B9D;
         color: #FAF6FA;
+        border-radius: 25px;
+        --background: 215AB7;
+        background-color: #215AB7;
+    }
+}
+
+.ion-card-footer {
+    width: 100%;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    span {
+        color: #858880;
+        font-size: 12px;
+        font-weight: 200;
+    }
+
+    button {
+        background-color: transparent;
+        font-size: 14px;
+        font-weight: 600;
+        padding-left: 3px;
+        color: #535558;
+    }
+
+    button:hover {
+        color: #969393;
     }
 }
