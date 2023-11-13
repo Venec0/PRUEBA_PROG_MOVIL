@@ -31,6 +31,14 @@ const routes: Routes = [
   {
     path: 'tu-componente', component: ScannerComponent 
   },
+  {
+    path: 'noencontrado',
+    loadChildren: () => import('./noencontrado/noencontrado.module').then( m => m.NoencontradoPageModule)
+  },
+    {path: '**',
+    redirectTo: 'noencontrado',
+    pathMatch: 'full'
+    },
   ];
 
 
