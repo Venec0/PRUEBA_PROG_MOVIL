@@ -58,3 +58,8 @@ background: none;
 .seccion {
     text-align: center;
 }
+
+.email ion-input {
+    --ion-background-color: transparent;
+    border-bottom: 1px solid aquamarine;
+}

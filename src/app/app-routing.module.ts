@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { ScannerComponent } from './component/scanner/scanner.component';
 
 const routes: Routes = [
   {
@@ -14,7 +15,8 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },  {
+  },
+  {
     path: 'login2',
     loadChildren: () => import('./login2/login2.module').then( m => m.Login2PageModule)
   },
@@ -26,8 +28,19 @@ const routes: Routes = [
     path: 'forgotpass',
     loadChildren: () => import('./forgotpass/forgotpass.module').then( m => m.ForgotpassPageModule)
   },
+  {
+    path: 'tu-componente', component: ScannerComponent 
+  },
+  {
+    path: 'noencontrado',
+    loadChildren: () => import('./noencontrado/noencontrado.module').then( m => m.NoencontradoPageModule)
+  },
+    {path: '**',
+    redirectTo: 'noencontrado',
+    pathMatch: 'full'
+    },
+  ];
 
-];
 
 @NgModule({
   imports: [
