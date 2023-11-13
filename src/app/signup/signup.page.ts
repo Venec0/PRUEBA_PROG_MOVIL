@@ -36,6 +36,7 @@ export class SignupPage {
     }
 
     users.push(userRegis);
+    console.log(userRegis);
     await Preferences.set({key:'users', value: JSON.stringify(users)})
 
     console.log('El Usuario registrado exitosamente.');
