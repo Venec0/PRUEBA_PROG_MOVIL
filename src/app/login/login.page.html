@@ -15,29 +15,60 @@
     </ion-card-header>
 
     <ion-card-content>
-      <div class = "signin-btns">
-        <ion-button fill="solid" shape="round" class="loginbtn">Login</ion-button>
-        <ion-button fill="outline" shape="round" color="light">Regisrarse</ion-button>
-      </div>
-      <div class ="text-tag">
+
+      <form [formGroup]="formLogin">
+        <ion-item class="email">
+          <ion-label position="floating">Correo Electrónico</ion-label>
+          <ion-input formControlName="email" pattern=".+"></ion-input>
+        </ion-item>
+    
+        <div *ngIf="formLogin.get('email')?.hasError('required') && formLogin.get('email')">
+          El correo electrónico es obligatorio.
+        </div>
+        <div *ngIf="formLogin.get('email')?.hasError('pattern') && formLogin.get('email')">
+          El formato del correo electrónico no es válido.
+        </div>
+    
+        <ion-item class="pass">
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input type="password" formControlName="pass" required></ion-input>
+        </ion-item>
+
+        <div *ngIf="formLogin.get('pass')?.hasError('required') && formLogin.get('pass')">
+          La contraseña es obligatoria.
+        </div>
+        <div *ngIf="formLogin.get('pass')?.hasError('pattern') && formLogin.get('pass')">
+          La contraseña debe ser un número de 4 dígitos.
+        </div>
+    
+        <div class="signin-btns">
+          <ion-button fill="solid" shape="round" class="loginbtn" type="submit" (click)="ingresar()" [disabled]="formLogin.invalid">Ingresar</ion-button>
+          <ion-button fill="outline" shape="round" color="light" (click)="redirectToSignup()">Registrarse</ion-button>
+        </div>
+      </form>
+
+
+      <div class="text-tag">
         <span>SEGUNDA ENTREGA - PROGRAMACIÓN APLICACIONES MÓVILES:</span>
       </div>
-      <div class ="students">
+
+      <div class="students">
         <span>ALUMNOS:</span>
       </div>
       <div class="names">
         JOEL MEDINA, FABIÁN ÁGUILA, ERIC GAISBAUER
       </div>
-      <div class ="teacher">
+
+      <div class="teacher">
         <span>PROFESOR:</span>
       </div>
       <div class="t-name">
         FRANCISCO ITURRA
       </div>
+
       <div class="seccion">
-        <span>SECCIÓN:010v</span>
+        <span>SECCIÓN: 010v</span>
       </div>
     </ion-card-content>
   </ion-card>
-
 </ion-content>
