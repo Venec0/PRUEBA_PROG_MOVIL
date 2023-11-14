@@ -7,7 +7,7 @@
 <ion-content>
 
   <ion-card class="ion-no-margin">
-    <ion-img src="assets/images/header.png"></ion-img>
+    <ion-img src="assets/images/header1.png"></ion-img>
     <ion-card-header>
       <ion-card-title>
         ¡BIENVENIDO!
@@ -17,7 +17,8 @@
     <ion-card-content>
 
       <form [formGroup]="formLogin">
-        <ion-item class="email">
+        <ion-item class="email" color="none">
+          <ion-icon name="mail-outline"></ion-icon>
           <ion-label position="floating">Correo Electrónico</ion-label>
           <ion-input formControlName="email" pattern=".+"></ion-input>
         </ion-item>
@@ -29,7 +30,8 @@
           El formato del correo electrónico no es válido.
         </div>
     
-        <ion-item class="pass">
+        <ion-item class="pass" color="none">
+          <ion-icon name="lock-closed-outline"></ion-icon>
           <ion-label position="floating">Contraseña</ion-label>
           <ion-input type="password" formControlName="pass" required></ion-input>
         </ion-item>
@@ -43,10 +45,12 @@
     
         <div class="signin-btns">
           <ion-button fill="solid" shape="round" class="loginbtn" type="submit" (click)="ingresar()" [disabled]="formLogin.invalid">Ingresar</ion-button>
-          <ion-button fill="outline" shape="round" color="light" (click)="redirectToSignup()">Registrarse</ion-button>
+          <ion-button fill="outline" shape="round" color="medium" (click)="redirectToSignup()">Registrarse</ion-button>
+        </div>
+        <div class="password_forgot">
+          <ion-button fill="clear" class="ion-no-padding">Recuperar Contraseña</ion-button>
         </div>
       </form>
-
 
       <div class="text-tag">
         <span>SEGUNDA ENTREGA - PROGRAMACIÓN APLICACIONES MÓVILES:</span>

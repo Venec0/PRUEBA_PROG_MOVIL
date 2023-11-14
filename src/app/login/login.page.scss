@@ -17,6 +17,24 @@ ion-header {
     position: absolute;
 }
 
+ion-item {
+    color: #74787E;
+    --border-color: #D4D7DB;
+    --padding-start: 0;
+    --inner-pading-end: 0;
+    ion-input {
+        color: #3880ff;
+    }
+}
+
+.password_forgot {
+    right: 0;
+    margin-top: -93px;
+    position: absolute;
+    ion-button {
+        font-size: 12px;
+    }
+}
 
 ion-card {
     --ion-background-color: transparent;
@@ -25,18 +43,17 @@ background: none;
 }
 
 .signin-btns {
-    margin-top: 55px;
+    margin-top: 45px;
     text-align: center;
-    color: #F0F4FA;
 }
 
 .loginbtn {
     --ion-color-primary: #215AB7;
-}
+}    
+
 
 .text-tag {
     text-align: center;
-    margin-bottom: 105px;
 }
 
 .students {
@@ -57,9 +74,4 @@ background: none;
 
 .seccion {
     text-align: center;
-}
-
-.email ion-input {
-    --ion-background-color: transparent;
-    border-bottom: 1px solid aquamarine;
 }
