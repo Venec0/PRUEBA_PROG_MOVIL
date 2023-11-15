@@ -8,6 +8,8 @@ import { AlertController } from '@ionic/angular';
   templateUrl: './signup.page.html',
   styleUrls: ['./signup.page.scss'],
 })
+
+
 export class SignupPage {
 
   formRegis: FormGroup;
@@ -24,8 +26,8 @@ export class SignupPage {
 
    async save() {
     const s = this.formRegis.value;
-    const userJSON = await Preferences.get({ key:'users'});
-    const users = userJSON && userJSON.value ? JSON.parse(userJSON.value) : [];
+    const usersJSON = await Preferences.get({ key:'users'});
+    const users = usersJSON && usersJSON.value ? JSON.parse(usersJSON.value) : [];
 
     var userRegis = {
       nameuser: s.NombreCompleto,

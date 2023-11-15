@@ -3,12 +3,19 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Preferences } from '@capacitor/preferences';
 import { AlertController } from '@ionic/angular';
+import { SignupPage } from '../signup/signup.page';
+
+
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
+
+
+
 export class LoginPage{
 
   formLogin: FormGroup;
@@ -37,6 +44,11 @@ export class LoginPage{
         localStorage.setItem("Inicio de sesion exitoso", "true");
         this.router.navigate(['/home']);
         }else{
+
+          const registroPage = new SignupPage();
+          await registroPage.registrarUsuario(i.email, i.pass);
+
+
           const alert = await this.alertController.create({
             header: 'Datos Ingresados incorrectos',
             message: 'Los datos que ha ingresado no son correctos, porfavor intente de nuevo.',
