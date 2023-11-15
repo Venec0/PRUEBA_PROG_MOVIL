@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { ScannerComponent } from './component/scanner/scanner.component';
 
 const routes: Routes = [
   {
@@ -23,9 +22,6 @@ const routes: Routes = [
   {
     path: 'forgotpass',
     loadChildren: () => import('./forgotpass/forgotpass.module').then( m => m.ForgotpassPageModule)
-  },
-  {
-    path: 'tu-componente', component: ScannerComponent 
   },
   {
     path: 'noencontrado',
