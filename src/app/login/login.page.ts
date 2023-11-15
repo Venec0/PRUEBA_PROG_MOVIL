@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Preferences } from '@capacitor/preferences';
 import { AlertController } from '@ionic/angular';
-import { SignupPage } from '../signup/signup.page';
+/* import { SignupPage } from '../signup/signup.page'; */
 
 
 
@@ -45,8 +45,8 @@ export class LoginPage{
         this.router.navigate(['/home']);
         }else{
 
-          const registroPage = new SignupPage();
-          await registroPage.registrarUsuario(i.email, i.pass);
+          /* const registroPage = new SignupPage();
+          await registroPage.registrarUsuario(i.email, i.pass); */
 
 
           const alert = await this.alertController.create({
