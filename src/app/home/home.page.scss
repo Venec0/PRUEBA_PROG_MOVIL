@@ -18,9 +18,13 @@ background: none;
 }
 
 ion-item {
-    align-items: center;
+    text-align: center;
     color: #74787E;
-    --border-color: none;
+    max-width: 80%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    --border-color: transparent;
     --padding-start: 0;
     --inner-pading-end: 0;
+
 }

@@ -1,8 +1,12 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Preferences } from '@capacitor/preferences';
 import { AlertController } from '@ionic/angular';
+import { Comuna } from 'src/app/api/comuna';
+import { Region } from 'src/app/api/region';
+import { LocationService } from 'src/app/servicios/location.service';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.page.html',
@@ -14,8 +18,12 @@ export class SignupPage {
 
   formRegis: FormGroup;
 
+  regiones: Region[] = [];
+  comunas: Comuna[] = [];
+  regionSelect: number = 0;
+  comunaSelect: number = 0;
 
-  constructor(private router: Router,public fb: FormBuilder, public alertController: AlertController) {
+  constructor(private locationService: LocationService,private router: Router,public fb: FormBuilder, public alertController: AlertController) {
     this.formRegis = this.fb.group({
       'nombre': new FormControl("", [Validators.required, Validators.minLength(5), Validators.maxLength(30), Validators.pattern(/^[a-zA-Z]*$/)]),
       'rut': new FormControl("", [Validators.required, Validators.minLength(9), Validators.maxLength(9),Validators.pattern(/^\d+$/)]),
@@ -31,6 +39,22 @@ export class SignupPage {
     
   }
 
+  ngOnInit() {
+    this.obtRegion();
+    this.obtComuna();
+  }
+
+  async obtRegion() {
+    const req = await this.locationService.getRegion();
+    this.regiones = req.data;
+    console.log("REGION", this.regiones);
+  }
+
+  async obtComuna() {
+    const req = await this.locationService.getComuna(this.regionSelect);
+    this.comunas = req.data;
+    console.log("COMUNA", this.comunas);
+  }
   async mostrarAlerta(header: string, message: string) {
     const alert = await this.alertController.create({
       header,
@@ -60,7 +84,9 @@ export class SignupPage {
       password: f.password,
       telefono: f.telefono,
       rut: f.rut,
-      usuario: f.usuario
+      usuario: f.usuario,
+      region: this.regiones.find(region => region.id === this.regionSelect),
+      comuna: this.comunas.find(comuna => comuna.id === this.comunaSelect)
     }
     
 
