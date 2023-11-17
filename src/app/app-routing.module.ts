@@ -24,6 +24,10 @@ const routes: Routes = [
     loadChildren: () => import('./forgotpass/forgotpass.module').then( m => m.ForgotpassPageModule)
   },
   {
+    path: 'qrreader',
+    loadChildren: () => import('./qrreader/qrreader.module').then( m => m.QrreaderPageModule)
+  },
+  {
     path: 'noencontrado',
     loadChildren: () => import('./noencontrado/noencontrado.module').then( m => m.NoencontradoPageModule)
   },
@@ -31,6 +35,7 @@ const routes: Routes = [
     redirectTo: 'noencontrado',
     pathMatch: 'full'
     },
+
   ];
 
 
