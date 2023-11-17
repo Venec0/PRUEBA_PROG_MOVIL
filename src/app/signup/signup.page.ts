@@ -8,44 +8,74 @@ import { AlertController } from '@ionic/angular';
   templateUrl: './signup.page.html',
   styleUrls: ['./signup.page.scss'],
 })
+
+
 export class SignupPage {
 
   formRegis: FormGroup;
 
-  constructor(public fb: FormBuilder,private router: Router, public alertController: AlertController) {
-    this.formRegis = this.fb.group({
-      'NombreCompleto': new FormControl("",[Validators.required, Validators.minLength(5), Validators.maxLength(30), Validators.pattern(/^[a-zA-Z]*$/)]),
-      'email': new FormControl("", [Validators.required,Validators.minLength(3),Validators.maxLength(20), Validators.pattern(/.+/)]),
-      'contraseña': new FormControl("",[Validators.required,Validators.minLength(4), Validators.maxLength(15),Validators.pattern(/^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)]),
-      'Telefono': new FormControl("", [Validators.required, Validators.minLength(9),Validators.maxLength(9), Validators.pattern(/^\d+$/)]),
-      'rut': new FormControl("", [Validators.required, Validators.minLength(9), Validators.maxLength(9),Validators.pattern(/^\d+$/)])
-    })
-   }
 
-   async save() {
-    const s = this.formRegis.value;
-    const userJSON = await Preferences.get({ key:'users'});
-    const users = userJSON && userJSON.value ? JSON.parse(userJSON.value) : [];
+  constructor(private router: Router,public fb: FormBuilder, public alertController: AlertController) {
+    this.formRegis = this.fb.group({
+      'nombre': new FormControl("", [Validators.required, Validators.minLength(5), Validators.maxLength(30), Validators.pattern(/^[a-zA-Z]*$/)]),
+      'rut': new FormControl("", [Validators.required, Validators.minLength(9), Validators.maxLength(9),Validators.pattern(/^\d+$/)]),
+      'Telefono': new FormControl("", [Validators.required, Validators.minLength(9),Validators.maxLength(9), Validators.pattern(/^\d+$/)]),
+      'usuario': new FormControl("", [Validators.required, Validators.minLength(5), Validators.maxLength(10), Validators.pattern(/^[a-zA-Z0-9]*$/)]),
+      'password': new FormControl("", [
+        Validators.required,
+        Validators.pattern(/^[a-zA-Z\d]{4,15}$/),
+        Validators.minLength(4),
+        Validators.maxLength(15)
+      ])
+    });
+    
+  }
+
+  async mostrarAlerta(header: string, message: string) {
+    const alert = await this.alertController.create({
+      header,
+      message,
+      buttons: ['Aceptar']
+    });
+
+    await alert.present();
+  }
+
+
+  async save() {
+    const f = this.formRegis.value;
+    const usuariosJSON = await Preferences.get({ key:'usuarios'});
+    const usuarios = usuariosJSON && usuariosJSON.value ? JSON.parse(usuariosJSON.value) : [];
+
+    if (this.usuarioExiste(usuarios, f.usuario))
+
+    if (this.usuarioExiste(usuarios, f.usuario)) {
+      await this.mostrarAlerta('El Usuario existe', 'El usuario ya existe. Por favor elige otro nombre de usuario para poder ingresar.');
+      return;
+    }
+    
 
     var userRegis = {
-      nameuser: s.NombreCompleto,
-      useremail: s.email,
-      userpass: s.contraseña,
-      celular: s.Telefono,
-      userrut: s.rut
+      nombre: f.nombre,
+      password: f.password,
+      telefono: f.telefono,
+      rut: f.rut,
+      usuario: f.usuario
     }
+    
 
-    users.push(userRegis);
+    usuarios.push(userRegis);
     console.log(userRegis);
-    await Preferences.set({key:'users', value: JSON.stringify(users)})
+    await Preferences.set({ key:'usuarios', value: JSON.stringify(usuarios) } );
 
-    console.log('El Usuario registrado exitosamente.');
+
+    console.log('Usuario registrado completado.');
     const successAlert = await this.alertController.create({
       header: 'Usuario Registrado',
-      message: 'El Usuario registrado exitosamente.',
+      message: 'Usuario registrado, gracias por registrarte :).',
       buttons: [
         {
-          text: 'Seguir',
+          text: 'Aceptar',
           handler: () => {
             this.router.navigate(['/login']);
           }
@@ -55,6 +85,11 @@ export class SignupPage {
 
     await successAlert.present();
 
+  }
+
+  usuarioExiste(usuarios: any[], usuario: string): boolean {
+    return usuarios.some(u => u.usuario === usuario);
+    
   }
 }
 

@@ -4,58 +4,70 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { Preferences } from '@capacitor/preferences';
 import { AlertController } from '@ionic/angular';
 
+
+
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
+
+
+
 export class LoginPage{
 
   formLogin: FormGroup;
 
-  constructor(public fb: FormBuilder,private router: Router, public alertController: AlertController) {
+  constructor(
+    public fb: FormBuilder,
+    private router: Router,
+    public alertController: AlertController
+  ) {
     this.formLogin = this.fb.group({
-      'email': new FormControl("", [Validators.required, Validators.pattern(/.+/)]),
-      'pass': new FormControl("", [Validators.required, Validators.pattern(/^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)])
-
-    })
+      'nombre': new FormControl("", [Validators.required, Validators.pattern(/^[a-zA-Z0-9]{3,8}$/)]),
+      'password': new FormControl("", [Validators.required, Validators.pattern(/^[a-zA-Z\d]{4,}$/)])
+    });
   }
 
+  ngOnInit() {}
 
   async ingresar() {
     if (this.formLogin.valid) {
-      const i = this.formLogin.value;
+      const f = this.formLogin.value;
+      const usuariosJSON = await Preferences.get({ key: 'usuarios'});
+      const usuarios: { nombre: string, password: string} [] = usuariosJSON && usuariosJSON.value ? JSON.parse(usuariosJSON.value) : [];
 
-      const userJSON = await Preferences.get({ key: 'users'});
-      const users: { email: string, pass: string }[] = userJSON && userJSON.value ? JSON.parse(userJSON.value) : [];
-      const user = users.find((u: any) => u.email === i.email && u.pass === i.pass);
+      const user = usuarios.find((u: any) => u.usuario === f.nombre && u.password === f.password);
 
-      if (user) {
-        await Preferences.set({ key: 'Mail', value: user.email});
-        await Preferences.set({ key: 'usuario', value: JSON.stringify(users)});
-        console.log("Inicio de sesion exitoso");
-        localStorage.setItem("Inicio de sesion exitoso", "true");
-        this.router.navigate(['/home']);
-        }else{
-          const alert = await this.alertController.create({
-            header: 'Datos Ingresados incorrectos',
-            message: 'Los datos que ha ingresado no son correctos, porfavor intente de nuevo.',
-            buttons: ['Aceptar']
-          });
+        if (user) {
+          await Preferences.set({ key: 'nombreDeUsuario', value: user.nombre});
+          await Preferences.set({ key: 'usuario', value: JSON.stringify(usuarios)});
+          console.log("Sesión iniciada");
+          localStorage.setItem("Sesión iniciada", "true");
+          this.router.navigate(['/home']);
+          }else{
+            const alert = await this.alertController.create({
+              header: 'Datos incorrectos',
+              message: 'Los datos que se ingresaron no son correctos.',
+              buttons: ['Aceptar']
+            });
 
-          await alert.present();
-        }
+            await alert.present();
+          }
 
-    }else {
-    const alert = await this.alertController.create({
-      header: 'Error',
-      message: 'Por favor, ingrese los datos correctmente.',
-      buttons: ['Aceptar']
-    });
+      }else {
+      const alert = await this.alertController.create({
+        header: 'Error',
+        message: 'Por favor, complete todos los campos correctamente.',
+        buttons: ['Aceptar']
+      });
 
-    await alert.present();
+      await alert.present();
     }
   }
+
 
   
   redirectToSignup() {

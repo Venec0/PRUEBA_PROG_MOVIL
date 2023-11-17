@@ -16,31 +16,26 @@
 
     <ion-card-content>
 
-      <form [formGroup]="formLogin">
+      <form [formGroup]="formLogin" class="form-login">
         <ion-item class="email" color="none">
           <ion-icon name="mail-outline"></ion-icon>
-          <ion-label position="floating">Correo Electrónico</ion-label>
-          <ion-input formControlName="email" pattern=".+"></ion-input>
+          <ion-label class="login-field-icon" position="floating">Nombre de Usuario</ion-label>
+            <ion-input formControlName="nombre" class="login-field input-field" pattern="^[a-zA-Z0-9]{3,8}$"></ion-input>
         </ion-item>
     
-        <div *ngIf="formLogin.get('email')?.hasError('required') && formLogin.get('email')">
-          El correo electrónico es obligatorio.
-        </div>
-        <div *ngIf="formLogin.get('email')?.hasError('pattern') && formLogin.get('email')">
-          El formato del correo electrónico no es válido.
+        <div *ngIf="formLogin.get('nombre')?.hasError('pattern')">
+          El Nombre Del Usuario es Obligatorio.
         </div>
     
         <ion-item class="pass" color="none">
           <ion-icon name="lock-closed-outline"></ion-icon>
-          <ion-label position="floating">Contraseña</ion-label>
-          <ion-input type="password" formControlName="pass" required></ion-input>
+          <ion-label class="login-field" position="floating">Contraseña</ion-label>
+          <ion-input formControlName="password" type="text" class="login-field1" pattern="^[a-zA-Z\d]{4,}$"></ion-input>
+
         </ion-item>
 
-        <div *ngIf="formLogin.get('pass')?.hasError('required') && formLogin.get('pass')">
+        <div *ngIf="formLogin.get('password')?.hasError('pattern')">
           La contraseña es obligatoria.
-        </div>
-        <div *ngIf="formLogin.get('pass')?.hasError('pattern') && formLogin.get('pass')">
-          La contraseña debe ser un número de 4 dígitos.
         </div>
     
         <div class="signin-btns">
