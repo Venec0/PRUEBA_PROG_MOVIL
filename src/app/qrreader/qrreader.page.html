@@ -10,7 +10,7 @@
     Comenzar Escaneo de QR
   </ion-button>
 
-  <ion-button *ngIf="!escaneando" (click)="detenerEscaneoQR()" expand="full" shape="round">
+  <ion-button *ngIf="escaneando" (click)="detenerEscaneoQR()" expand="full" shape="round">
     <ion-icon slot="start" name="stop-circle-outline"></ion-icon>
     Detener Escaneo de QR
   </ion-button>
