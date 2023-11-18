@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { Login2PageRoutingModule } from './login2-routing.module';
+import { QrreaderPageRoutingModule } from './qrreader-routing.module';
 
-import { Login2Page } from './login2.page';
+import { QrreaderPage } from './qrreader.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    Login2PageRoutingModule
+    QrreaderPageRoutingModule
   ],
-  declarations: [Login2Page]
+  declarations: [QrreaderPage]
 })
-export class Login2PageModule {}
+export class QrreaderPageModule {}
