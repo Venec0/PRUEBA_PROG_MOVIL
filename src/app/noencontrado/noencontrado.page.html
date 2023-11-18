@@ -1,13 +1,15 @@
-<ion-header [translucent]="true">
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>Error 404</ion-title>
+      <!-- <ion-title>home</ion-title> -->
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
+  <ion-card class="ion-no-margin">
+      <ion-img src="assets/images/Trade Offer.png"></ion-img>
+  </ion-card>
 
-  <h1>No se ha podido encontrar la página</h1>
-
-  <ion-button fill="solid" [routerLink]="['/login']">Volver a inicio</ion-button>
-
+  <ion-item color="none">
+    NO SE HA ENCONTRADO LA PÁGINA, INTENTALO DE NUEVO!
+  </ion-item>
 </ion-content>
