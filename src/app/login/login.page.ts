@@ -4,10 +4,6 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { Preferences } from '@capacitor/preferences';
 import { AlertController } from '@ionic/angular';
 
-
-
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
