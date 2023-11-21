@@ -39,8 +39,23 @@ ion-card-subtitle {
     padding: 0 30px;
 }
 
+.comuna-region {
+    position: relative;
+    right: -10px;
+    color: #74787E;
+    --border-color: #D4D7DB;
+    --highlight-color-focused: #215AB7;
+    --padding-start: 0;
+    --inner-padding-end: 0;
+}
+
 ion-card-content {
-    padding-top: 30px;
+    position: relative;
+
+    ion-button {
+        color: #53565A;
+        padding-top: 70px !important;
+    }
 }
 
 ion-item {
@@ -71,8 +86,4 @@ ion-item {
     text-align: center;
 
     --ion-primary-color: #53565A;
-}
-
-ion-button {
-    color: #53565A;
 }

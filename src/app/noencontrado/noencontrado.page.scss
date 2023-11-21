@@ -1,0 +1,30 @@
+ion-content {
+    --ion-background-color: light;
+}
+
+ion-toolbar {
+    --ion-background-color: transparent;
+    opacity: 0;
+}
+
+ion-header {
+    position: absolute;
+}
+
+ion-card {
+    --ion-background-color: transparent;
+box-shadow: none !important;
+background: none;
+}
+
+ion-item {
+    text-align: center;
+    color: #74787E;
+    max-width: 80%;
+    margin: 0 auto;
+    margin-bottom: 60px;
+    --border-color: transparent;
+    --padding-start: 0;
+    --inner-pading-end: 0;
+
+}

@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
-import jsQR, { QRCode } from 'jsqr';
+import jsQR, {QRCode} from 'jsqr';
 
 @Component({
   selector: 'app-qrreader',
