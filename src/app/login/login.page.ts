@@ -46,7 +46,7 @@ export class LoginPage{
           }else{
             const alert = await this.alertController.create({
               header: 'Datos incorrectos',
-              message: 'Los datos que se ingresaron no son correctos.',
+              message: 'Error encontrado, Porfavor los datos que se ingresaron no son correctos.',
               buttons: ['Aceptar']
             });
 
@@ -56,7 +56,7 @@ export class LoginPage{
       }else {
       const alert = await this.alertController.create({
         header: 'Error',
-        message: 'Por favor, complete todos los campos correctamente.',
+        message: 'Error encontrado, Porfavor complete todos los campos correctamente.',
         buttons: ['Aceptar']
       });
 
