@@ -7,8 +7,7 @@ import { AutenticacionGuard } from 'src/app/servicios/autenticacion.guard';
 const routes: Routes = [
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule),
-    canActivate: [AutenticacionGuard]
+    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
   },
   {
     path: '',
@@ -23,12 +22,10 @@ const routes: Routes = [
   {
     path: 'signup',
     loadChildren: () => import('./signup/signup.module').then(m => m.SignupPageModule),
-    canActivate: [AutenticacionGuard]
   },
   {
     path: 'forgotpass',
     loadChildren: () => import('./forgotpass/forgotpass.module').then(m => m.ForgotpassPageModule),
-    canActivate: [AutenticacionGuard]
   },
   {
     path: 'qrreader',
