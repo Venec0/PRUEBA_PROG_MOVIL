@@ -21,25 +21,21 @@
         Llena el siguiente formulario para crear tu cuenta:
       </ion-card-subtitle>
     </ion-card-header>
-   
-    <div class="comuna-region-container">
-      <div class="comuna-region">
-        <ion-item color="transparent">
-          <ion-label position="floating">Región</ion-label>
-          <ion-select (ionChange)="obtComuna()" placeholder="Seleccione región" [(ngModel)]="regionSelect">
-            <ion-select-option [value]="i.id" *ngFor="let i of regiones">{{i.nombre}}</ion-select-option>
-          </ion-select>
-        </ion-item>
-      
-        <ion-item color="transparent">
-          <ion-label position="floating">Comuna</ion-label>
-          <ion-select placeholder="Seleccione comuna" [(ngModel)]="comunaSelect">
-            <ion-select-option [value]="i.id" *ngFor="let i of comunas">{{i.nombre}}</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </div>
-    </div>
 
+    <ion-item color="transparent">
+      <ion-label position="floating">Región</ion-label>
+      <ion-select (ionChange)="obtComuna()" placeholder="Seleccione región" [(ngModel)]="regionSelect">
+        <ion-select-option [value]="i.id" *ngFor="let i of regiones">{{i.nombre}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item color="transparent">
+      <ion-label position="floating">Comuna</ion-label>
+      <ion-select placeholder="Seleccione comuna" [(ngModel)]="comunaSelect">
+        <ion-select-option [value]="i.id" *ngFor="let i of comunas">{{i.nombre}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    
     <form [formGroup]="formRegis" (ngSubmit)="save()">
 
     <ion-card-content>
@@ -126,7 +122,7 @@
 
       <ion-item color="transparent">
         <ion-input formControlName="usuario" type="text" placeholder="Nombre Usuario">
-          <ion-icon name="person-circle-outline"></ion-icon>
+          <ion-icon name="card-outline"></ion-icon>
         </ion-input>
       </ion-item>
 
@@ -152,5 +148,6 @@
       </div>
     </ion-card-content>
      </form>
+  
   </ion-card>
 </ion-content>
