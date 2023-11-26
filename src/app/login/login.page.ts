@@ -4,10 +4,6 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { Preferences } from '@capacitor/preferences';
 import { AlertController } from '@ionic/angular';
 
-
-
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -46,11 +42,11 @@ export class LoginPage{
           await Preferences.set({ key: 'usuario', value: JSON.stringify(usuarios)});
           console.log("Sesión iniciada");
           localStorage.setItem("Sesión iniciada", "true");
-          this.router.navigate(['/home']);
+          this.router.navigate(['/qrreader']);
           }else{
             const alert = await this.alertController.create({
               header: 'Datos incorrectos',
-              message: 'Los datos que se ingresaron no son correctos.',
+              message: 'Error encontrado, Porfavor los datos que se ingresaron no son correctos.',
               buttons: ['Aceptar']
             });
 
@@ -60,7 +56,7 @@ export class LoginPage{
       }else {
       const alert = await this.alertController.create({
         header: 'Error',
-        message: 'Por favor, complete todos los campos correctamente.',
+        message: 'Error encontrado, Porfavor complete todos los campos correctamente.',
         buttons: ['Aceptar']
       });
 

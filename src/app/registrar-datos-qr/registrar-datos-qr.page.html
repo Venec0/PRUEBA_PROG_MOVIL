@@ -1,0 +1,40 @@
+<ion-card class="ion-no-margin">
+  <ion-card-header>
+    <ion-card-title>
+      Registrar Tus Datos
+    </ion-card-title>
+  </ion-card-header>
+</ion-card>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-title>
+      DATOS DEL USUARIO
+    </ion-title>
+    <p [innerHTML]="msjPreferences"></p>
+    <p *ngIf="latitude !== undefined && longitude !== undefined">
+      Latitud: {{ latitude }}, Longitud: {{ longitude }}
+    </p>
+  </ion-card>
+
+  <ion-card>
+    <ion-title>Alumno</ion-title>
+    <ion-list>
+      <ion-item *ngFor="let usuario of usuarios">
+        <ion-label>
+          <strong>RUT:</strong> {{ usuario.rut }} <br>
+          <strong>Nombre:</strong> {{ usuario.nombre }} <br>
+          <strong>Apellido:</strong> {{ usuario.apellido }} <br>
+          <strong>Usuario:</strong> {{ usuario.usuario }} <br>
+          <ng-container *ngIf="usuario.region">
+            <strong>Región:</strong> {{ usuario.region.nombre }}<br>
+          </ng-container>
+          <ng-container *ngIf="usuario.comuna">
+            <strong>Comuna:</strong> {{ usuario.comuna.nombre }}<br>
+          </ng-container>
+          <strong>La hora:</strong> {{ horaPreferences }}<br>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>
