@@ -22,7 +22,7 @@ export class LoginPage{
     public alertController: AlertController
   ) {
     this.formLogin = this.fb.group({
-      'nombre': new FormControl("", [Validators.required, Validators.pattern(/^[a-zA-Z0-9]{3,8}$/)]),
+      'nombre': new FormControl("", [Validators.required, Validators.pattern(/^[a-zA-Z0-9\s]{3,}$/)]),
       'password': new FormControl("", [Validators.required, Validators.pattern(/^[a-zA-Z\d]{4,}$/)])
     });
   }
@@ -42,7 +42,7 @@ export class LoginPage{
           await Preferences.set({ key: 'usuario', value: JSON.stringify(usuarios)});
           console.log("Sesión iniciada");
           localStorage.setItem("Sesión iniciada", "true");
-          this.router.navigate(['/qrreader']);
+          this.router.navigate(['/scanner']);
           }else{
             const alert = await this.alertController.create({
               header: 'Datos incorrectos',

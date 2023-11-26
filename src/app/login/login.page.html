@@ -20,7 +20,7 @@
         <ion-item class="email" color="none">
           <ion-icon name="mail-outline"></ion-icon>
           <ion-label class="login-field-icon" position="floating">Nombre de Usuario</ion-label>
-            <ion-input formControlName="nombre" class="login-field input-field" pattern="^[a-zA-Z0-9]{3,8}$"></ion-input>
+            <ion-input formControlName="nombre" class="login-field input-field" pattern="^[a-zA-Z0-9\s]{3,}$"></ion-input>
         </ion-item>
     
         <div *ngIf="formLogin.get('nombre')?.hasError('pattern')">

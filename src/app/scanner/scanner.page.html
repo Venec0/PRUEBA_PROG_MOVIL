@@ -1,30 +1,35 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    
-    <ion-title>scanner</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
+
+  <!-- Sección para escanear QR -->
   <ion-card (click)="scan()">
     <h3>Escanear</h3>
   </ion-card>
 
-
-  <ion-card *ngFor="let i of qr">
-    <h3>Docente: {{i.docente}}</h3>
-    <h3>Asignatura: {{i.asignatura}}</h3>
-    <h3>Sala: {{i.sala}}</h3>
-    <h3>Fecha: {{i.fecha}}</h3>
-    <h3>Hora: {{i.hora}}</h3>
+  <ion-card *ngFor="let i of qr" class="data-card">
+    <h2>Datos QR</h2>
+    <h3>Rut: {{ i.rut }}</h3>
+    <h3>Nombre: {{ i.nombre }}</h3>
+    <h3>Nombre Usuario: {{ i.usuario }}</h3>
+    <h3>Region: {{ i.region?.nombre }}</h3>
+    <h3>Comuna: {{ i.comuna?.nombre }}</h3>
+    <h3>Hora: {{ i.horaPreferences }}</h3>
     <div class="box">
       <ion-button (click)="saveDataQr()" color="success" >Aceptar</ion-button>
-      <ion-button color="danger">Cancelar</ion-button>
+      <ion-button (click)="confirmCancel()" color="danger">Cancelar</ion-button>
     </div>
+  </ion-card>
+
+  <ion-card *ngFor="let usuario of usuarios" class="data-card">
+    <h2>Datos usuario</h2>
+    <h3>Nombre: {{ usuario.nombre }}</h3>
+    <h3>Rut: {{ usuario.rut }}</h3>
+    <h3>Nombre Usuario: {{ usuario.usuario }}</h3>
+    <ng-container *ngIf="usuario.region">
+      <strong>Región:</strong> {{ usuario.region.nombre }}
+    </ng-container>
+    <ng-container *ngIf="usuario.comuna">
+      <strong>Comuna:</strong> {{ usuario.comuna.nombre }}
+    </ng-container>
   </ion-card>
 
 </ion-content>

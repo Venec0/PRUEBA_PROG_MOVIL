@@ -3,5 +3,10 @@
     "integrations": {
       "capacitor": {}
     },
-    "type": "angular"
+    "type": "angular",
+    "plugins": {
+      "BarcodeScanner": {
+        "CAN_PROMPT_FOR_CAMERA_PERMISSION": true
+      }
+    }
   }

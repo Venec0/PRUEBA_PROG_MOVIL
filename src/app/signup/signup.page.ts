@@ -25,10 +25,10 @@ export class SignupPage {
 
   constructor(private locationService: LocationService,private router: Router,public fb: FormBuilder, public alertController: AlertController) {
     this.formRegis = this.fb.group({
-      'nombre': new FormControl("", [Validators.required, Validators.minLength(5), Validators.maxLength(30), Validators.pattern(/^[a-zA-Z]*$/)]),
+      'nombre': new FormControl("", [Validators.required, Validators.minLength(5), Validators.maxLength(30), Validators.pattern(/^[a-zA-Z\s]*$/)]),
       'rut': new FormControl("", [Validators.required, Validators.minLength(9), Validators.maxLength(9),Validators.pattern(/^\d+$/)]),
       'Telefono': new FormControl("", [Validators.required, Validators.minLength(9),Validators.maxLength(9), Validators.pattern(/^\d+$/)]),
-      'usuario': new FormControl("", [Validators.required, Validators.minLength(5), Validators.maxLength(10), Validators.pattern(/^[a-zA-Z0-9]*$/)]),
+      'usuario': new FormControl("", [Validators.required, Validators.minLength(5), Validators.maxLength(10), Validators.pattern(/^[a-zA-Z0-9\s]*$/)]),
       'password': new FormControl("", [
         Validators.required,
         Validators.pattern(/^[a-zA-Z\d]{4,15}$/),
