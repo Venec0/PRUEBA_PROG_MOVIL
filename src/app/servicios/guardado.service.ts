@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Preferences } from '@capacitor/preferences';
 
-
-const storageUser = "userData";
+const keyUser = 'datosUsuarios';
+const keyAsistencia = 'datosAsistencia';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,6 @@ const storageUser = "userData";
 export class GuardadoService {
   public userCorreo = "";
   constructor() { }
-
   async getItem(llave:string):Promise<string | null>{
     const obj = await Preferences.get({key:llave});
     return obj.value;
@@ -20,14 +19,23 @@ export class GuardadoService {
     await Preferences.set({key:llave,value:valor});
   }
 
+  async agregarUsuario(usuario:any[]){
+    const usuarios = await this.obtenerUsuario();
+    for (const i of usuarios) {
+      if (i) {
+        usuario.push(i);
+      }
+    }
+    this.setItem(keyUser,JSON.stringify(usuario));
+  }
 
   async obtenerUsuario(){
-    const storageData = await this.getItem(storageUser);
-    if (storageData == null) {
+    const storage = await this.getItem(keyUser);
+    if (storage == null) {
       return [];
     }
 
-    const data:any[] = JSON.parse(storageData);
+    const data:any[] = JSON.parse(storage);
     if (data) {
       return data;
     }else{
@@ -35,15 +43,29 @@ export class GuardadoService {
     }
   }
 
-  async agregarUsuario(user:any[]){
-    const usuarios = await this.obtenerUsuario();
-    for (const i of usuarios) {
+
+  async agregarAsistencia(asistencia:any[]){
+    const asistencias = await this.obtenerAsistencia();
+    for (const i of asistencias) {
       if (i) {
-        user.push(i);
+        asistencia.push(i);
       }
     }
+    this.setItem(keyAsistencia,JSON.stringify(asistencia));
+  }
 
-    this.setItem(storageUser,JSON.stringify(user));
+  async obtenerAsistencia(){
+    const storage = await this.getItem(keyAsistencia);
+    if (storage == null) {
+      return [];
+    }
+
+    const data:any[] = JSON.parse(storage);
+    if (data) {
+      return data;
+    }else{
+      return [];
+    }
   }
 
 

@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen] = 'true'>
+  <ion-card *ngFor="let usuario of usuario" >
+    <ion-card-header>
+      <ion-card-title>
+        {{usuario.nombre}}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>rut: {{usuario.rut}}</p>
+      <p>región: {{usuario.region}}</p>
+      <p>comuna: {{usuario.comuna}}</p>
+      <p>rut: {{usuario.rut}}</p>
+
+
+    </ion-card-content>
+
+
+  </ion-card>
+</ion-content>
