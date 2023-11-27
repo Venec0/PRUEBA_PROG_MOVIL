@@ -28,10 +28,16 @@ const routes: Routes = [
     loadChildren: () => import('./forgotpass/forgotpass.module').then(m => m.ForgotpassPageModule),
   },
   {
-    path: 'qrreader',
-    loadChildren: () => import('./qrreader/qrreader.module').then(m => m.QrreaderPageModule),
+    path: 'scanner',
+    loadChildren: () => import('./scanner/scanner.module').then( m => m.ScannerPageModule),
+  },
+  
+  {
+    path: 'registrar-datos-qr',
+    loadChildren: () => import('./registrar-datos-qr/registrar-datos-qr.module').then(m => m.RegistrarDatosQRPageModule),
     canActivate: [AutenticacionGuard]
   },
+
   {
     path: 'noencontrado',
     loadChildren: () => import('./noencontrado/noencontrado.module').then(m => m.NoencontradoPageModule),
@@ -41,8 +47,10 @@ const routes: Routes = [
     path: '**',
     redirectTo: 'noencontrado',
     pathMatch: 'full'
-  },
-];
+    }
+
+
+  ];
 
 @NgModule({
   imports: [

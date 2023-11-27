@@ -131,15 +131,15 @@
       </div>
       
       <div *ngIf="formRegis.get('usuario')?.hasError('minlength') && formRegis.get('usuario')?.touched">
-        El Rut debe tener al menos 8 caracteres.
+        El nombre debe tener al menos 5 caracteres.
       </div>
       
       <div *ngIf="formRegis.get('usuario')?.hasError('maxlength') && formRegis.get('usuario')?.touched">
-        El RUT no debe superar los 9 caracteres.
+        El RUT no debe superar los 100 caracteres.
       </div>
       
       <div *ngIf="formRegis.get('usuario')?.hasError('pattern') && formRegis.get('usuario')?.touched">
-        Ingresa un RUT válido.
+        Ingresa un nombre válido.
       </div>
 
       
