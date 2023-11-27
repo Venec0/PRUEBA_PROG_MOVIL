@@ -1,0 +1,8 @@
+{
+  "appId": "cl.AppRegis.app",
+  "appName": "AppRegis",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}

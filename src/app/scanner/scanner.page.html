@@ -1,0 +1,33 @@
+<ion-content [fullscreen]="true">
+  <ion-card (click)="scan()">
+    <h3>Escanear</h3>
+  </ion-card>
+
+  <ion-card *ngFor="let i of qr" class="data-card">
+    <h2>Datos QR</h2>
+    <h3>Asignatura: {{ i.asignatura }}</h3>
+    <h3>Docente: {{ i.docente }}</h3>
+    <h3>Fecha: {{ i.fecha }}</h3>
+    <h3>Clase: {{i.leccion}}</h3>
+    <h3>Sala: {{i.sala}}</h3>
+    <h3>Seccion: {{i.seccion}}</h3>
+    <div class="box">
+      <ion-button (click)="saveDataQr()" color="success" >Aceptar</ion-button>
+      <ion-button (click)="confirmCancel()" color="danger">Cancelar</ion-button>
+    </div>
+  </ion-card>
+
+  <ion-card *ngFor="let usuario of usuarios" class="data-card">
+    <h2>Datos usuario</h2>
+    <h3>Nombre: {{ usuario.nombre }}</h3>
+    <h3>Rut: {{ usuario.rut }}</h3>
+    <h3>Nombre Usuario: {{ usuario.usuario }}</h3>
+    <ng-container *ngIf="usuario.region">
+      <strong>Región:</strong> {{ usuario.region.nombre }}
+    </ng-container>
+    <ng-container *ngIf="usuario.comuna">
+      <strong>Comuna:</strong> {{ usuario.comuna.nombre }}
+    </ng-container>
+  </ion-card>
+
+</ion-content>

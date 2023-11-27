@@ -1,0 +1,153 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <!-- <ion-title>signup</ion-title> -->
+    <ion-buttons slot="start">
+      <ion-back-button defaulthref = "login" text="">
+      </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="bg-color">
+
+  <ion-card class="ion-no-margin" color="transparent">
+
+    <ion-card-header>
+      <ion-card-title>
+        Registro de Usuario
+      </ion-card-title>
+      <ion-card-subtitle>
+        Llena el siguiente formulario para crear tu cuenta:
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-item color="transparent">
+      <ion-label position="floating">Región</ion-label>
+      <ion-select (ionChange)="obtComuna()" placeholder="Seleccione región" [(ngModel)]="regionSelect">
+        <ion-select-option [value]="i.id" *ngFor="let i of regiones">{{i.nombre}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item color="transparent">
+      <ion-label position="floating">Comuna</ion-label>
+      <ion-select placeholder="Seleccione comuna" [(ngModel)]="comunaSelect">
+        <ion-select-option [value]="i.id" *ngFor="let i of comunas">{{i.nombre}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    
+    <form [formGroup]="formRegis" (ngSubmit)="save()">
+
+    <ion-card-content>
+      <ion-item color="transparent">
+        <ion-input formControlName="nombre" type="text" placeholder="Nombre Completo" color="black">
+          <ion-icon name="person-outline"></ion-icon>
+        </ion-input>
+        <div *ngIf="formRegis.get('nombre')?.hasError('required') && formRegis.get('nombre')?.touched">
+          El nombre completo es obligatorio.
+        </div>
+        <div *ngIf="formRegis.get('nombre')?.hasError('minlength') && formRegis.get('nombre')?.touched">
+          El nombre completo debe tener al menos 5 caracteres.
+        </div>
+        <div *ngIf="formRegis.get('nombre')?.hasError('maxlength') && formRegis.get('nombre')?.touched">
+          El nombre completo no puede tener más de 30 caracteres.
+        </div>
+        <div *ngIf="formRegis.get('nombre')?.hasError('pattern') && formRegis.get('nombre')?.touched">
+          El nombre completo solo puede contener letras.
+        </div>
+
+      </ion-item>
+
+        <ion-item color="transparent">
+        <ion-input formControlName="password" type="text" placeholder="Contraseña">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+        </ion-input>
+        <div *ngIf="formRegis.get('password')?.hasError('required') && formRegis.get('password')?.touched">
+          La contraseña es obligatoria.
+        </div>
+        
+        <div *ngIf="formRegis.get('password')?.hasError('minlength') && formRegis.get('password')?.touched">
+          La contraseña debe tener al menos 4 caracteres.
+        </div>
+        
+        <div *ngIf="formRegis.get('password')?.hasError('maxlength') && formRegis.get('password')?.touched">
+          La contraseña no debe superar los 15 caracteres.
+        </div>
+        
+
+      </ion-item>
+      <ion-item color="transparent">
+        <ion-input formControlName="Telefono" type="text" placeholder="Celular">
+          <ion-icon name="call-outline"></ion-icon>
+        </ion-input>
+
+        <div *ngIf="formRegis.get('Telefono')?.hasError('required') && formRegis.get('Telefono')?.touched">
+          El número telefónico es obligatorio.
+        </div>
+        
+        <div *ngIf="formRegis.get('Telefono')?.hasError('minlength') && formRegis.get('Telefono')?.touched">
+          El número telefónico debe tener al menos 9 dígitos.
+        </div>
+        
+        <div *ngIf="formRegis.get('Telefono')?.hasError('maxlength') && formRegis.get('Telefono')?.touched">
+          El número telefónico no debe superar los 9 dígitos.
+        </div>
+        
+        <div *ngIf="formRegis.get('Telefono')?.hasError('pattern') && formRegis.get('Telefono')?.touched">
+          Ingresa un número telefónico válido.
+        </div>
+
+      </ion-item>
+      <ion-item color="transparent">
+        <ion-input formControlName="rut" type="text" placeholder="RUT">
+          <ion-icon name="card-outline"></ion-icon>
+        </ion-input>
+      </ion-item>
+
+      <div *ngIf="formRegis.get('rut')?.hasError('required') && formRegis.get('rut')?.touched">
+        El Rut es obligatorio.
+      </div>
+      
+      <div *ngIf="formRegis.get('rut')?.hasError('minlength') && formRegis.get('rut')?.touched">
+        El Rut debe tener al menos 8 caracteres.
+      </div>
+      
+      <div *ngIf="formRegis.get('rut')?.hasError('maxlength') && formRegis.get('rut')?.touched">
+        El RUT no debe superar los 9 caracteres.
+      </div>
+      
+      <div *ngIf="formRegis.get('rut')?.hasError('pattern') && formRegis.get('rut')?.touched">
+        Ingresa un RUT válido.
+      </div>
+
+      <ion-item color="transparent">
+        <ion-input formControlName="usuario" type="text" placeholder="Nombre Usuario">
+          <ion-icon name="card-outline"></ion-icon>
+        </ion-input>
+      </ion-item>
+
+      <div *ngIf="formRegis.get('usuario')?.hasError('required') && formRegis.get('usuario')?.touched">
+        El Nombre de Usuario es obligatorio.
+      </div>
+      
+      <div *ngIf="formRegis.get('usuario')?.hasError('minlength') && formRegis.get('usuario')?.touched">
+        El nombre debe tener al menos 5 caracteres.
+      </div>
+      
+      <div *ngIf="formRegis.get('usuario')?.hasError('maxlength') && formRegis.get('usuario')?.touched">
+        El RUT no debe superar los 100 caracteres.
+      </div>
+      
+      <div *ngIf="formRegis.get('usuario')?.hasError('pattern') && formRegis.get('usuario')?.touched">
+        Ingresa un nombre válido.
+      </div>
+
+      
+      <div class = "signin-btns">
+        <ion-button fill="outline" shape="round" color="#53565A" [disabled]="!formRegis.valid" (click)="save()">Registrarse</ion-button>
+      </div>
+    </ion-card-content>
+     </form>
+  
+  </ion-card>
+</ion-content>

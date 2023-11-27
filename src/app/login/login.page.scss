@@ -1,0 +1,77 @@
+ion-content {
+    --ion-background-color: #E1EAF9 !important;
+}
+
+ion-toolbar {
+    --ion-background-color: transparent;
+    opacity: 0;
+}
+
+ion-card-title {
+    font-size: 20px;
+    color: #080808;
+    text-align: center;
+}
+
+ion-header {
+    position: absolute;
+}
+
+ion-item {
+    color: #74787E;
+    --border-color: #D4D7DB;
+    --padding-start: 0;
+    --inner-pading-end: 0;
+    ion-input {
+        color: #3880ff;
+    }
+}
+
+.password_forgot {
+    right: 0;
+    margin-top: -93px;
+    position: absolute;
+    ion-button {
+        font-size: 12px;
+    }
+}
+
+ion-card {
+    --ion-background-color: transparent;
+box-shadow: none !important;
+background: none;
+}
+
+.signin-btns {
+    margin-top: 45px;
+    text-align: center;
+}
+
+.loginbtn {
+    --ion-color-primary: #215AB7;
+}    
+
+
+.text-tag {
+    text-align: center;
+}
+
+.students {
+    text-align: center;
+}
+
+.names {
+    text-align: center;
+}
+
+.teacher {
+    text-align: center;
+}
+
+.t-name {
+    text-align: center;
+}
+
+.seccion {
+    text-align: center;
+}
